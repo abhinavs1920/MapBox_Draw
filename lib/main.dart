@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:untitled/polyline_provider.dart';
 import 'package:untitled/waypoint.dart';
 import 'package:untitled/circle.dart';
 import 'package:untitled/free_hand.dart';
@@ -9,8 +10,11 @@ import 'marker_provider.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => MarkerProvider(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => MarkerProvider()),
+        ChangeNotifierProvider(create: (context) => PolylineProvider()),
+      ],
       child: MyApp(),
     ),
   );
